@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flowline | Data platform control room</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">F</div><div><strong>Flowline</strong><span>Data platform</span></div></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav>
+        <a class="nav-item active" href="#overview"><span class="nav-icon">▦</span>Overview</a>
+        <a class="nav-item" href="#pipeline"><span class="nav-icon">◈</span>Pipeline runs</a>
+        <a class="nav-item" href="#quality"><span class="nav-icon">✓</span>Data quality</a>
+        <a class="nav-item" href="#outputs"><span class="nav-icon">↗</span>Layer outputs</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><b>Local workspace</b><span>Connected</span></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">DATA PLATFORM / OVERVIEW</div><h1>Pipeline control room</h1></div><div class="top-actions"><span class="last-sync" id="last-sync">Checking status…</span><button class="icon-button" id="refresh-btn" title="Refresh status">↻</button><button class="avatar">RM</button></div></header>
+      <section class="hero" id="overview"><div><div class="eyebrow accent">MEDALLION WORKSPACE</div><h2>Turn raw records into trusted decisions.</h2><p>Run your Bronze → Silver → Gold workflow, inspect data quality, and monitor every layer from one place.</p></div><div class="hero-orbit"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-core">DQ<br><b>98%</b></div></div></section>
+      <section class="metrics-grid"><article class="metric-card"><div class="metric-label">TOTAL SALES</div><div class="metric-value" id="total-sales">—</div><div class="metric-foot positive">↗ From Gold product summary</div></article><article class="metric-card"><div class="metric-label">CLEAN RECORDS</div><div class="metric-value" id="clean-records">—</div><div class="metric-foot">Silver validated rows</div></article><article class="metric-card"><div class="metric-label">PRODUCTS TRACKED</div><div class="metric-value" id="products">—</div><div class="metric-foot">Distinct Product_Name values</div></article><article class="metric-card quality-card"><div class="metric-label">PIPELINE HEALTH</div><div class="metric-value">Healthy <span class="health-pulse"></span></div><div class="metric-foot">All configured layers available</div></article></section>
+      <section class="content-grid">
+        <div class="panel pipeline-panel" id="pipeline"><div class="panel-heading"><div><div class="eyebrow">ORCHESTRATION</div><h3>Pipeline flow</h3></div><button class="primary-button" id="run-btn"><span class="play">▶</span> Run pipeline</button></div><div class="upload-row"><label class="upload-control"><input type="file" id="source-file" accept=".xlsx,.csv,.json" /><span class="upload-icon">↑</span><span><b id="file-label">Choose a source file</b><small>Upload XLSX, CSV, or JSON to start</small></span></label><span class="run-note" id="run-note">Using the current Bronze source when no file is selected.</span></div><div class="layer-flow"><div class="layer-node bronze"><div class="layer-top"><span class="layer-badge">01</span><span class="layer-status" id="bronze-status">PENDING</span></div><div class="layer-symbol">↓</div><h4>Bronze</h4><p>Raw ingestion</p><strong id="bronze-meta">— files · — records</strong></div><div class="flow-line"><span></span></div><div class="layer-node silver"><div class="layer-top"><span class="layer-badge">02</span><span class="layer-status" id="silver-status">PENDING</span></div><div class="layer-symbol">✦</div><h4>Silver</h4><p>Cleaned &amp; validated</p><strong id="silver-meta">— files · — records</strong></div><div class="flow-line"><span></span></div><div class="layer-node gold"><div class="layer-top"><span class="layer-badge">03</span><span class="layer-status" id="gold-status">PENDING</span></div><div class="layer-symbol">◆</div><h4>Gold</h4><p>Business-ready</p><strong id="gold-meta">— files · — records</strong></div></div></div>
+        <div class="panel quality-panel" id="quality"><div class="panel-heading"><div><div class="eyebrow">VALIDATION</div><h3>Quality checks</h3></div><span class="check-count" id="check-count">— checks</span></div><div class="check-list"><div class="check-row"><span class="check-icon pass">✓</span><div><b>Duplicate Order_IDs</b><small>Deduplicated in Silver</small></div><strong>PASS</strong></div><div class="check-row"><span class="check-icon pass">✓</span><div><b>Quantity validation</b><small>Quantity must be greater than 0</small></div><strong>PASS</strong></div><div class="check-row"><span class="check-icon pass">✓</span><div><b>Unit_Price defaults</b><small>Blank values replaced with zero</small></div><strong>PASS</strong></div><div class="check-row"><span class="check-icon pass">✓</span><div><b>Total_Sales calculation</b><small>Quantity × Unit_Price</small></div><strong>PASS</strong></div></div></div>
+      </section>
+      <section class="bottom-grid" id="outputs"><div class="panel table-panel"><div class="panel-heading"><div><div class="eyebrow">GOLD OUTPUT</div><h3>Product sales summary</h3></div><span class="view-label">Live output</span></div><div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>QUANTITY</th><th class="right">TOTAL SALES</th></tr></thead><tbody id="summary-body"><tr><td colspan="3" class="empty">Run the pipeline to populate Gold output.</td></tr></tbody></table></div></div><div class="panel activity-panel"><div class="panel-heading"><div><div class="eyebrow">OBSERVABILITY</div><h3>Activity log</h3></div><span class="live-label"><i></i> Live</span></div><div class="activity-list" id="activity-list"><div class="empty">No activity yet.</div></div></div></section>
+      <footer>Flowline local dashboard <span>•</span> outputs are written to <code>target/</code> <span>•</span> <a href="https://github.com/rmuppsani/DataPlatformGenerator/tree/main/target" target="_blank">View repository outputs ↗</a></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
