@@ -244,6 +244,6 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", "8002"))
+    port = int(os.environ.get("PORT", "8003"))
     print(f"Dashboard running at http://localhost:{port}")
     ThreadingHTTPServer(("localhost", port), DashboardHandler).serve_forever()
