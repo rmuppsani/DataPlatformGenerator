@@ -224,7 +224,7 @@ Some runtime paths and Delta writes require Databricks or a Spark environment co
 
 ## Local dashboard
 
-A dependency-free local control room is available in `dashboard/`. It supports source upload, Bronze/Silver/Gold execution, layer status, validation checks, Gold product summaries, and an activity log. The local API writes refreshed outputs to `target/`.
+A dependency-free local control room is available in `dashboard/`. It supports source upload, Bronze/Silver/Gold execution, layer status, validation checks, Gold product summaries, and an activity log. The local API writes refreshed outputs by default to `C:\Users\rmuppasani\Testing\POC\Test3\Target` with `Bronze`, `Silver`, and `Gold` subfolders. Set the `TARGET_DIR` environment variable to use another location.
 
 Start it from the project root:
 
@@ -232,4 +232,4 @@ Start it from the project root:
 python dashboard/server.py
 ```
 
-Open `http://localhost:8001` in a browser. Choose an `.xlsx`, `.csv`, or `.json` source file and select **Run pipeline**. If no file is selected, the existing Bronze workbook is processed. Set the `PORT` environment variable to use a different port.
+Open `http://localhost:8002` in a browser. Choose an `.xlsx`, `.csv`, or `.json` source file and select **Run pipeline**. If no file is selected, the existing Bronze workbook is processed. Set the `PORT` environment variable to use a different port.
