@@ -232,4 +232,4 @@ Start it from the project root:
 python dashboard/server.py
 ```
 
-Open `http://localhost:8002` in a browser. Choose an `.xlsx`, `.csv`, or `.json` source file and select **Run pipeline**. If no file is selected, the existing Bronze workbook is processed. Set the `PORT` environment variable to use a different port.
+Open `http://localhost:8003` in a browser. Choose an `.xlsx`, `.csv`, or `.json` source file and select **Run pipeline**. If no file is selected, the existing Bronze workbook is processed. Set the `PORT` environment variable to use a different port.
