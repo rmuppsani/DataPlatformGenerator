@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET = ROOT / "target"
+TARGET = Path(os.environ.get("TARGET_DIR", r"C:\Users\rmuppasani\Testing\POC\Test3\Target"))
 DASHBOARD = Path(__file__).resolve().parent
 BRONZE = TARGET / "Bronze"
 SILVER = TARGET / "Silver"
@@ -244,6 +244,6 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", "8001"))
+    port = int(os.environ.get("PORT", "8002"))
     print(f"Dashboard running at http://localhost:{port}")
     ThreadingHTTPServer(("localhost", port), DashboardHandler).serve_forever()
